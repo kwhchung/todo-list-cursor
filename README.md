@@ -1,5 +1,6 @@
 # Todo List Application
 
+My first vibe coding project with Cursor.
 A comprehensive todo list application built with TypeScript, React, Express, and MongoDB.
 
 ## Features
