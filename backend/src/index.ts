@@ -13,7 +13,24 @@ const PORT = process.env.PORT || 8080;
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://todo-list-cursor.vercel.app/', // Allow requests from frontend
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'https://todo-list-cursor.vercel.app',
+      'https://todo-list-cursor-wing-hei-chungs-projects.vercel.app',
+      'http://localhost:3000'
+    ];
+    
+    // Check if the origin is in our allowed list
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
