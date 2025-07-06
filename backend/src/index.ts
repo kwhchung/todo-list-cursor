@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8080;
 
 // CORS configuration
 const corsOptions = {
-  origin: '*', // Allow requests from frontend
+  origin: 'https://todo-list-cursor.vercel.app/', // Allow requests from frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
